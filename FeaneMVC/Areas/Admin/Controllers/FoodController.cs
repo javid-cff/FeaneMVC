@@ -80,7 +80,6 @@ namespace FeaneMVC.Areas.Admin.Controllers
 
             Food food = new Food()
             {
-                Id = vm.Id,
                 Name = vm.Name,
                 Description = vm.Description,
                 ImagePath = uniqueImagePath,

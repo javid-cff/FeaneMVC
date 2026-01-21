@@ -87,7 +87,7 @@ namespace FeaneMVC.Areas.Admin.Controllers
             if (existCategory == null)
                 return BadRequest();
 
-            existCategory.Id = vm.Id;
+            //existCategory.Id = vm.Id;
             existCategory.Name = vm.Name;
 
             _context.Categories.Update(existCategory);

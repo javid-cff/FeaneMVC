@@ -1,21 +1,28 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
+using FeaneMVC.Contexts;
 using FeaneMVC.Models;
+using FeaneMVC.ViewModels.FoodViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FeaneMVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(ILogger<HomeController> _logger, FeaneDbContext _context) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public async Task<IActionResult> Index()
         {
-            _logger = logger;
-        }
+            var foods = await _context.Foods.Select(x => new FoodGetVM()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                Price = x.Price,
+                ImagePath = x.ImagePath,
+                CategoryName = x.Category.Name
+            }).ToListAsync();
 
-        public IActionResult Index()
-        {
-            return View();
+            return View(foods);
         }
 
         public IActionResult Privacy()
