@@ -1,0 +1,45 @@
+﻿@model FoodUpdateVM
+
+<div class="container">
+    <div class="row">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
+            <h1>Edit Food</h1>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <input asp-for="Description" class="form-control" id="exampleFormControlInput1" placeholder="description">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Price</label>
+                <input asp-for="Price" class="form-control" id="exampleFormControlInput1" placeholder="price">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Image</label>
+                <input asp-for="Image" class="form-control" id="exampleFormControlInput1" placeholder="image">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Select Category</label>
+                <select asp-for="CategoryId" class="form-control" id="exampleFormControlSelect1" asp-items="ViewBag.Categories">
+                    <option value="" hidden disabled selected>--- Select Category ---</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="Food" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
